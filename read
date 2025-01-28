@@ -1,0 +1,40 @@
+Ah, I'll show you how to set this up using the Windows GUI Task Scheduler. It's simpler than using PowerShell commands.
+
+Open Task Scheduler (you can search for it in Windows Start menu)
+In Task Scheduler:
+
+Click "Create Task" on the right panel (not "Create Basic Task")
+In the "General" tab:
+
+Give it a name (like "RunStartupScript")
+Select "Run with highest privileges" checkbox
+Select "Configure for: Windows 10" (or your Windows version)
+
+
+
+
+In the "Triggers" tab:
+
+Click "New"
+Select "At log on" from the dropdown
+Click "OK"
+
+
+In the "Actions" tab:
+
+Click "New"
+Program/script: powershell.exe
+Add these arguments: -NoExit -ExecutionPolicy Bypass -Command "cd 'C:\runner'; .\run.cmd"
+Click "OK"
+
+
+In the "Settings" tab:
+
+Check "Allow task to be run on demand"
+Uncheck "Stop the task if it runs longer than"
+Click "OK" to save the task
+
+
+
+You can test it by right-clicking the task and selecting "Run". It should open an admin PowerShell window, change to your runner directory, and execute run.cmd.
+Would you like me to clarify any of these steps?
